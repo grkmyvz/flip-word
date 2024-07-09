@@ -32,10 +32,10 @@ export default function Card({ wordData }: { wordData: Word }) {
       >
         <div className={cardStyles.inner}>
           <div className={cardStyles.front}>
-            <h2>{word.en}</h2>
+            <h2>{word.en.toLowerCase()}</h2>
           </div>
           <div className={cardStyles.back}>
-            <h2>{word.tr}</h2>
+            <h2>{word.tr.toLowerCase()}</h2>
           </div>
         </div>
       </div>
