@@ -109,16 +109,24 @@ button {
   border: 0px;
   border-radius: 10px;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
 
 button:hover {
   background-color: #462a28;
 }
 
+h1 {
+  margin: 0;
+  padding: 0;
+  color: #dadada;
+}
+
 p {
-  padding: 1rem;
+  padding: 0 1rem;
   font-size: 0.7rem;
   font-style: italic;
+  color: #bdbdbd;
 }
 
 @media (prefers-color-scheme: dark) {
