@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import Head from "next/head";
 import { Inter } from "next/font/google";
+import Image from "next/image";
 import Card from "@/components/Card";
-import Button from "@/components/Button";
 import { GetWordResponse, Word } from "@/types";
 import homeStyles from "@/styles/Home.module.css";
 
@@ -10,6 +10,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const [word, setWord] = useState<Word | null>(null);
+  const [isSpeaking, setIsSpeaking] = useState(false);
 
   const handleNewWord = () => {
     fetch("/api/getWord")
@@ -29,6 +30,31 @@ export default function Home() {
           throw new Error("Word not found");
         }
       });
+  };
+
+  const handleSpeakerClick = () => {
+    if (word === null) {
+      return;
+    }
+
+    if ("speechSynthesis" in window) {
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(word.en);
+      utterance.lang = "en-US";
+      utterance.rate = 0.2;
+
+      utterance.onstart = () => {
+        setIsSpeaking(true);
+      };
+
+      utterance.onend = () => {
+        setIsSpeaking(false);
+      };
+
+      window.speechSynthesis.speak(utterance);
+    } else {
+      alert("Speech synthesis is not supported in this browser.");
+    }
   };
 
   useEffect(() => {
@@ -55,8 +81,16 @@ export default function Home() {
         </p>
         {word && (
           <>
+            <Image
+              src="/assets/speaker-icon.png"
+              alt="speaker icon"
+              width={32}
+              height={32}
+              className={homeStyles.speakerIcon}
+              onClick={handleSpeakerClick}
+            />
             <Card wordData={word} />
-            <Button onClick={handleNewWord} />
+            <button onClick={handleNewWord}>Next Word</button>
           </>
         )}
       </main>
