@@ -4,8 +4,14 @@
   align-items: center;
   text-align: center;
   width: 50%;
-  gap: 20px;
+  gap: 1rem;
   margin: 10px auto;
+}
+
+.cardsTypeContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
 }
 
 .speakerIcon {

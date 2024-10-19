@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
-import { Word } from "@/types";
-import cardStyles from "@/styles/Card.module.css";
+import { useEffect, useState } from 'react';
+import cardStyles from '@/styles/Card.module.css';
+import { CardData } from '@/types';
 
-export default function Card({ wordData }: { wordData: Word }) {
-  const [word, setWord] = useState<Word | null>(null);
+export default function Card({ wordData }: { wordData: CardData }) {
+  const [word, setWord] = useState<CardData | null>(null);
   const [isFlipped, setIsFlipped] = useState(false);
 
   const handleClick = () => {
@@ -27,15 +27,15 @@ export default function Card({ wordData }: { wordData: Word }) {
   return (
     <div className={cardStyles.frame}>
       <div
-        className={`${cardStyles.card} ${isFlipped ? cardStyles.flipped : ""}`}
+        className={`${cardStyles.card} ${isFlipped ? cardStyles.flipped : ''}`}
         onClick={handleClick}
       >
         <div className={cardStyles.inner}>
           <div className={cardStyles.front}>
-            <h2>{word.en.toLowerCase()}</h2>
+            <h2>{word.front.toLowerCase()}</h2>
           </div>
           <div className={cardStyles.back}>
-            <h2>{word.tr.toLowerCase()}</h2>
+            <h2>{word.back.toLowerCase()}</h2>
           </div>
         </div>
       </div>

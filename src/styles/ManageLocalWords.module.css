@@ -1,0 +1,28 @@
+.container {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.tabHeader {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.tabHeader button {
+  background-color: transparent;
+  color: #8c8377;
+  border-radius: 0px;
+}
+
+.tabHeader button:hover {
+  background-color: #8c8377;
+  color: #402422;
+}
+
+.active {
+  background-color: #8c8377;
+  color: #402422;
+  border-bottom: 5px solid #402422;
+}

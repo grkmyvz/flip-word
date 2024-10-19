@@ -1,9 +1,5 @@
-export type Word = {
-  en: string;
-  tr: string;
-};
-
-export type GetWordResponse = {
-  data?: Word;
-  error?: string;
+export type CardData = {
+  id?: number;
+  front: string;
+  back: string;
 };
